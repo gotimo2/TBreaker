@@ -26,7 +26,7 @@ namespace TBreaker.GUI
 
         public TBClient client { get 
             {
-                if (_client == null) { client = new TBClient(new System.Net.Http.HttpClient(), 0, "000", TokenTextBox.Text); }
+                if (_client == null) { client = new TBClient(new System.Net.Http.HttpClient(), "000", TokenTextBox.Text); }
 
                 return _client;
             }

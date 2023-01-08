@@ -36,6 +36,8 @@ namespace WebGUI.Client.Pages
 
             outputText = $"High score: {savedata.game.overall.highscore} \n total score: {savedata.game.overall.totalScore}";
 
+            StateHasChanged();
+
         }
 
 
@@ -46,10 +48,12 @@ namespace WebGUI.Client.Pages
             var text = "";
             foreach (var entry in scoreboard)
             {
-                text += $"{entry.rank} : {entry.name}: \n {entry.score}";
+                text += $"{entry.rank} : {entry.name} : \n {entry.score} \n";
             }
 
             outputText = text;
+
+            StateHasChanged();
         }
 
         private async void startGame()
@@ -58,19 +62,23 @@ namespace WebGUI.Client.Pages
             lastGameId = result;
 
             outputText = $"game started! id {lastGameId}";
+
+            StateHasChanged();
         }
 
         private async void stopGame()
         {
             var result = await Client.endGame(lastGameId, desiredScore, desiredScore, desiredScore + new Random().Next(200, 250));
             outputText = "Game ended!";
+
+            StateHasChanged();
         }
 
         
         private TBClient buildClient()
         {
             HttpClient http = new HttpClient();
-            return new TBClient(http, Int32.Parse(playerId), gameId, token);
+            return new TBClient(http, gameId, token);
         }
 
 

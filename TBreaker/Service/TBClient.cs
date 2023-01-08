@@ -10,14 +10,13 @@ namespace TBreaker.Service
     {
         private HttpClient client { get; set; }
 
-        private int playerId { get; set; }
 
         private string gameId { get; set; }
 
         private string token { get; set; }
 
 
-        public TBClient(HttpClient client, int playerId, string gameId, string token)
+        public TBClient(HttpClient client, string gameId, string token)
         {
             client.BaseAddress = new UriBuilder("https://engagement-games-api.lwprod.nl").Uri;
             client.DefaultRequestHeaders.Add("authorization", "Bearer " + token);
@@ -28,7 +27,6 @@ namespace TBreaker.Service
 
             this.client = client;
 
-            this.playerId = playerId;
             this.gameId = gameId;
             this.token = token;
         }
