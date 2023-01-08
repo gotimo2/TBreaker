@@ -1,12 +1,33 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
+﻿<PageTitle>Tbreaker</PageTitle>
+
+<div>
+    <main>
+        <article>
+            <div class="container">
+                <h1>TBreaker</h1>
+                <p>Have you ever wanted to completely and utterly overengineer a solution, to something that shouldn't be a problem?</p>
+            </div>
+        </article>
+        <article>
+            <div class="grid">
+                <input type="text" placeholder="Token" @bind="token" />
+                <input type="text" placeholder="Game id" @bind="gameId" />
+            </div>
+            <div class="grid">
+                <button @onclick="getScore">Get high score</button>
+                <button @onclick="getScoreboard">Get scoreboard</button>
+            </div>
+            <input type="text" placeholder="Desired score" @bind="desiredScore" />
+            <div class="grid">
+                <button @onclick="startGame">Start game</button>
+                <button @onclick="stopGame">End game</button>
+            </div>
+        </article>
+        <article>
+            <textarea>
+                @outputText
+            </textarea>
+
+        </article>
+    </main>
+</div>

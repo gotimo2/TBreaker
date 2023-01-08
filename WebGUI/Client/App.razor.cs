@@ -1,24 +1,24 @@
 ﻿using TBreaker.Service;
 
-namespace WebGUI.Client.Pages
+namespace WebGUI.Client
 {
-    public partial class Index
+    public partial class App
     {
 
         private TBClient _client;
 
-        public TBClient Client { 
-            
+        public TBClient Client
+        {
+
             get
             {
                 _client = buildClient();
                 return _client;
-            }  
+            }
         }
 
         private string token;
 
-        private string playerId;
 
         private string gameId;
 
@@ -74,13 +74,12 @@ namespace WebGUI.Client.Pages
             StateHasChanged();
         }
 
-        
+
         private TBClient buildClient()
         {
             HttpClient http = new HttpClient();
             return new TBClient(http, gameId, token);
         }
-
 
     }
 }
